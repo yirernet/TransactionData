@@ -18,6 +18,55 @@ textarea {
     max-width: 280px;
 }
 
+/* site title
+----------------------------------------------------------*/
+.site-title {
+    color: #c8c8c8;
+    font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
+    font-size: 2.3em;
+    margin: 0;
+}
+
+.site-title a, .site-title a:hover, .site-title a:active {
+    background: none;
+    color: #c8c8c8;
+    outline: none;
+    text-decoration: none;
+}
+
+
+h1, h2, h3,
+h4, h5, h6 {
+    color: #000;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+h5, h6 {
+    font-size: 1em;
+}
+
+    h5 a:link, h5 a:visited, h5 a:active {
+        padding: 0;
+        text-decoration: none;
+    }
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
@@ -29,3 +78,135 @@ textarea {
         padding: 0;
     }
 }
+
+.site-title {
+    color: #c8c8c8;
+    font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
+    font-size: 2.3em;
+    margin: 0;
+}
+
+    .site-title a, .site-title a:hover, .site-title a:active {
+        background: none;
+        color: #c8c8c8;
+        outline: none;
+        text-decoration: none;
+    }
+
+#logo {
+    float: left;
+    max-height: 40px;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #005eb8;
+    overflow: hidden;
+}
+
+    /* Style the links inside the navigation bar */
+    .topnav a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+        /* Change the color of links on hover */
+        .topnav a:hover {
+            background-color: #0094ff;
+            color: black;
+        }
+
+/* Add an active class to highlight the current page */
+.active {
+    background-color: lightskyblue;
+    color: white;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+    display: none;
+}
+
+.contact h3 {
+    font-size: 1.2em;
+}
+
+.contact p {
+    margin: 5px 0 0 10px;
+}
+
+.contact iframe {
+    border: 1px solid #333;
+    margin: 5px 0 0 10px;
+}
+/* info and errors */
+.message-info {
+    border: 1px solid;
+    clear: both;
+    padding: 10px 20px;
+}
+
+.message-error {
+    clear: both;
+    color: #e80c4d;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+
+.message-success {
+    color: #7ac0da;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+
+.error {
+    color: #e80c4d;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #e80c4d;
+    font-weight: bold;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #e80c4d;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #e80c4d;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+/* page titles */
+hgroup.title {
+    margin-bottom: 10px;
+}
+
+    hgroup.title h1, hgroup.title h2 {
+        display: inline;
+    }
+
+    hgroup.title h2 {
+        font-weight: normal;
+        margin-left: 3px;
+    }

@@ -1,42 +1,32 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TransactionData._Default" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
+<asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
+<section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Home page</h1>
+            </hgroup>
             <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
+                This web application has been designed to process the account transaction data to calculate tax figures for a client tax return.
+                The transaction data has 4 columns: <mark>Account, Description, Currency Code and Amount</mark> and each individual file could contain up to 100k rows..
+                You can choose between displaying the list of transactions or upload a Excel file to import and insert into the database.
             </p>
         </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-            </p>
-        </div>
-    </div>
+    </section>
+</asp:Content>
+<asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
+    <h3>There is two features:</h3>
+    <ol class="round">
+        <li class="one">
+            <h5>Transactions</h5>
+            It shows you all single data transaction stored inside the database with their corresponding id
+            <a href="/Transactions">Click here…</a>
+        </li>
+        <li class="two">
+            <h5>Upload file</h5>
+            You can upload a Excel file with specific fields to import and insert into the database
+            <a href="/Upload">Click here…</a>
+        </li>
+    </ol>
 
 </asp:Content>

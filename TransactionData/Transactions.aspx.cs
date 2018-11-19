@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace TransactionData
 {
-    public partial class About : Page
+    public partial class Transactions : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
