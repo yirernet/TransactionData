@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GemBox.Spreadsheet;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -15,7 +16,7 @@ namespace TransactionData
 {
     public partial class Upload : Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected static void Page_Load(object sender, EventArgs e)
         {
 
         }
@@ -26,7 +27,8 @@ namespace TransactionData
 
 
         protected void UploadExcelDataToDatabase(object sender, EventArgs e)
-        {  
+        {
+            SpreadsheetInfo.SetLicense("FREE-LIMITED-KEY");
             try
             {
                 string errors = "";
@@ -41,7 +43,7 @@ namespace TransactionData
                     {
                         // Create a datatable to bulk insert into the DB
                         //DataTable csvData = DataAccess.InitDataTable();
-
+                        
                         // First read the file to check format
                         using (StreamReader reader = new StreamReader(File.OpenRead(filePath)))
                         {

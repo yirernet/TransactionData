@@ -2,7 +2,6 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <hgroup class="title">
-        <h1>UploadFile</h1>
         <h2>Upload a CSV file containing transactions data.</h2>
     </hgroup>
 
@@ -23,7 +22,7 @@
                     ValidationGroup="validate" Display="Dynamic" ControlToValidate="fluExcel">
                 </asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="revExcel" runat="server" ErrorMessage="Upload Excel File"
-                    ValidationGroup="validate" Display="Dynamic" ValidationExpression="^.*\.(csv|CSV|xlsx|XLSX|xls|XLS)$"
+                    ValidationGroup="validate" Display="Dynamic" ValidationExpression="^.*\.(xlsx|XLSX)$"
                     ControlToValidate="fluExcel">
                 </asp:RegularExpressionValidator>
                 <asp:Button ID="btnUpload" Text="Upload" runat="server" OnClick="UploadExcelDataToDatabase"

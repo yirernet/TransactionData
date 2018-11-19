@@ -19,52 +19,29 @@
 
 </head>
 <body>
-    
-        <%--<div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="~/">Transation Data</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/Upload">Upload</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
-                    </ul>
-                </div>
-                 <p class="site-title">
-                    <a runat="server" href="~/"><img border="0" src="/Content/Images/kpmg-logo.jpg" ></a>
-                </p>
-            </div>
-        </div>--%>
-        <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <div class="topnav" id="myTopnav">
-          <img src="/Content/Images/KPMG-Logo.jpg" id="logo" />
-          <a href="/" class="active">Home</a>
-          <a href="/Upload">Upload</a>
-          <a href="/Transactions">Transactions</a>
-          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <div class="topnav" id="myTopnav">
+        <img src="/Content/Images/KPMG-Logo.jpg" id="logo" />
+        <a href="/" class="active">Home</a>
+        <a href="/Upload">Upload</a>
+        <a href="/Transactions">Transactions</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
-          </a>
-        </div>
-        <div class="container body-content">
-             <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - KPMG Transaction Data</p>
-            </footer>
-        </div>
+        </a>
+    </div>
+    <div class="container body-content">
+        <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+        <hr />
+        <footer>
+            <p>&copy; <%: DateTime.Now.Year %> - KPMG Transaction Data</p>
+        </footer>
+    </div>
 
- 
+
 </body>
 </html>
