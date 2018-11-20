@@ -209,7 +209,7 @@ namespace TransactionData.Core
                        {
                            Key = "ProcessValidation",
                            Message =
-                             $"Cound not process transaction ( Account:{transaction.Account} , Desciption:{transaction.Description}, Currency:{transaction.CurrencyCode}, Amount {transaction.Amount} )",
+                             $"Cound not process transaction ( Account: {transaction.Account} , Desciption: {transaction.Description}, Currency: {transaction.CurrencyCode}, Amount: {transaction.Amount} )",
                            IsErrored = true
                        });
                 }
@@ -236,7 +236,7 @@ namespace TransactionData.Core
                         {
                             Key = "ProcessValidation",
                             Message =
-                              $"Error in saving transaction Account:{transaction.Account} , Desciption:{transaction.Description}, Currency:{transaction.CurrencyCode}, Amount {transaction.Amount} )",
+                              $"Error in saving transaction Account: {transaction.Account} , Desciption: {transaction.Description}, Currency: {transaction.CurrencyCode}, Amount: {transaction.Amount} )",
                             IsErrored = true
                         });
                     }
