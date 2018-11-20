@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TransactionData.Core.Model;
 
 namespace TransactionData.Core.Interfaces
 {
     public interface ITransactionDataProvider
     {
         void Save(string[] values);
-        
+
+        int Save(TransactionModel transaction);
+
+
     }
 }

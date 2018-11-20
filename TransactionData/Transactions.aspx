@@ -12,6 +12,12 @@
                 <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
                 <asp:BoundField DataField="CurrencyCode" HeaderText="CurrencyCode" SortExpression="CurrencyCode" />
                 <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount" />
+                 <asp:CommandField ShowEditButton="true" >  
+                 <ControlStyle ForeColor="#d10011" />
+                </asp:CommandField>
+                 <asp:CommandField ShowDeleteButton="true" > 
+                <ControlStyle ForeColor="#d10011" />
+                </asp:CommandField>
             </Columns>
 <HeaderStyle CssClass="header"></HeaderStyle>
 

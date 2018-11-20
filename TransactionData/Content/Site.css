@@ -274,3 +274,7 @@ hgroup.title {
 .mydatagrid th {
     padding: 5px;
 }
+
+.mydatagrid input {
+    color: black;
+}
