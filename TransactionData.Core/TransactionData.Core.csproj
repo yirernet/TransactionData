@@ -64,6 +64,7 @@
     <Compile Include="Interfaces\ITransationDataProvider.cs" />
     <Compile Include="Interfaces\ITransactionProcess.cs" />
     <Compile Include="Messeges\ExcelFileErrorMesseges.cs" />
+    <Compile Include="ReadXslxFile.cs" />
     <Compile Include="TransactionProcess.cs" />
     <Compile Include="Interfaces\Iiso4217DataProvider.cs" />
     <Compile Include="Iso4217DataProvider.cs" />

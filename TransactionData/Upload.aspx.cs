@@ -39,7 +39,7 @@ namespace TransactionData
 
                 if (inputFile.HasFile)
                 {
-                    if (inputFile.FileName.ToUpper().EndsWith(".XLSX") || inputFile.FileName.ToUpper().EndsWith(".CSV"))
+                    if (inputFile.FileName.ToUpper().EndsWith(".CSV"))
                     {
                         // Create a datatable to bulk insert into the DB
                         //DataTable csvData = DataAccess.InitDataTable();
@@ -98,6 +98,11 @@ namespace TransactionData
                         {
                             MessageHandler.HandleMsg(divMessage, "message-error", errors);
                         }
+                    }
+                    else if(inputFile.FileName.ToUpper().EndsWith(".XLSX"))
+                    {
+                        ReadXslxFile readXslxFile = new ReadXslxFile();
+                        var data = readXslxFile.GetDataSetFromExcelFile(filePath);
                     }
                     else
                     {
