@@ -46,22 +46,13 @@ namespace TransactionData.Core
         {
             var errorMessages = new List<ExcelMessages>();
 
-            int j;
-
             DataSet excelDataSet = excelData.AsDataSet();
 
             var transactions = new List<TransactionModel>();
 
-            if (hasColumnNames)
-            {
-                j = 1;
-            }
-            else
-            {
-                j = 0;
-            }
-
             //ignore first transaction as that it caption  (j = 1 instead of j = 0)
+            int j = (hasColumnNames) ? 1 : 0;
+                       
             for ( ; j < excelDataSet.Tables[0].Rows.Count; j++)
             {
                 transactions.Add(new TransactionModel

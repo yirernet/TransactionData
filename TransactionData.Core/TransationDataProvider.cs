@@ -24,22 +24,6 @@ namespace TransactionData.Core
             _dataAccess = dataAccess;
         }
 
-        public void Save(string[] values)
-        {
-            DataTable excelDatatable = _dataAccess.InitDataTable();
-
-            DataRow dataRow = excelDatatable.NewRow();
-            // Use Trim to remove blank spaces
-            dataRow["Account"] = values[0].Trim();
-            dataRow["Description"] = values[1].Trim();
-            dataRow["CurrencyCode"] = values[2].Trim();
-            dataRow["Amount"] = values[3].Trim();
-            excelDatatable.Rows.Add(dataRow);
-
-            // Insert the current datatable to DB
-            _dataAccess.InsertDataIntoSQLServerUsingSQLBulkCopy(excelDatatable);
-        }
-
         public int Save(TransactionModel transaction)
         {
             try
@@ -62,11 +46,7 @@ namespace TransactionData.Core
             catch (Exception)
             {
                 throw;
-            }
-           
-
-        
+            }    
         }
-
     }
 }

@@ -1,5 +1,4 @@
-﻿using GemBox.Spreadsheet;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -11,6 +10,7 @@ using TransactionData.Core;
 using TransactionData.Core.Interfaces;
 using TransactionData.Core.Messeges;
 using TransactionData.Handler;
+using System.Configuration;
 
 namespace TransactionData
 {
@@ -21,139 +21,72 @@ namespace TransactionData
 
         }
 
-
         static readonly IIso4217DataProvider _isoProvider = new Iso4217DataProvider();
         static readonly ITransactionDataProvider _transactionDataProvider = new TransationDataProvider();
         static readonly ITransactionProcess _transactionProcess = new TransactionProcess(_isoProvider, _transactionDataProvider);
         static readonly IDataExcelReader _dataExcelReader = new DataExcelReader(_transactionProcess);
 
-
         protected void UploadExcelDataToDatabase(object sender, EventArgs e)
         {
             try
             {
-                string errors = "";
-                int i = 0, j = 0;
                 FileUpload inputFile = fluExcel;
-                string filePath = inputFile.PostedFiles[0].FileName;
-                bool IsFirstRowDone = false;
+
+                // This only works with Internet Explorer
+                //string filePath = inputFile.PostedFiles[0].FileName;
+                //////////////////////////////////////////////////////
+
+                string filePath = ConfigurationManager.AppSettings["ExcelFilePath"].ToString() + Path.GetFileName(inputFile.FileName);
 
                 if (inputFile.HasFile)
-                {
-                    if (inputFile.FileName.ToUpper().EndsWith(".CSV"))
+                {  
+                    if(inputFile.FileName.ToUpper().EndsWith(".XLSX"))
                     {
-                        // Create a datatable to bulk insert into the DB
-                        //DataTable csvData = DataAccess.InitDataTable();
                         
-                        // First read the file to check format
-                        using (StreamReader reader = new StreamReader(File.OpenRead(filePath)))
+                        string errorMsg = string.Empty;
+
+                        bool hasColumnNames = true; 
+
+                        var excelData = _dataExcelReader.GetExcelFile(filePath);
+
+                        if (excelData != null)
                         {
-                            // For each line of the file
-                            while (!reader.EndOfStream)
+                            //validate column names
+                            List<ExcelMessages> errorMessages = _transactionProcess.ValidateExcelFirstRow(excelData);
+
+                            if (errorMessages.Any(m => m.IsErrored))
                             {
-                                i++;
-                                var line = reader.ReadLine();
-                                var values = line.Split(',');
-
-                                if (!IsFirstRowDone)
+                                foreach (var message in errorMessages)
                                 {
-                                    //Validate first row for Account, Description, Currency Code and Amount
-                                    List < ExcelMessages > errorMessage = _transactionProcess.ValidateExcelFirstRow(values.ToArray());
+                                    errorMsg += message.Message + "! <br/>";
 
-
-                                    if (errorMessage.Count > 0)
-                                        {
-                                            MessageHandler.HandleMsg(divMessage, "message-error", errorMessage[0].Message);
-                                            i = 0;
-                                            break;
-                                        }
-                                    IsFirstRowDone = true;
                                 }
+                                MessageHandler.HandleMsg(divMessage, "message-error", errorMsg);
 
-                                if (i > 1)
-                                {
-                                    // Test the correctness of the whole line and returns a code error
-                                    int errorCode = _transactionProcess.ValidateExcelContent(values.ToArray());
-
-                                    // If no error, create new row to insert
-                                    if (errorCode == 0)
-                                    {
-                                        _transactionProcess.Process(values.ToArray());
-
-                                    }
-                                    // Else display issue on website
-                                    else
-                                    {
-                                        j++;
-                                        errors += "Error on row " + i + ": " + ErrorCode.ErrorDetails(errorCode) + "! <br/>";
-                                    }
-                                }
+                                if (errorMessages.Count == 4)
+                                        hasColumnNames = false;
                             }
 
-                        }
-
-                        if (i > 0)
-                        {
-                            MessageHandler.HandleMsg(divSuccess, "message-success", "Results: " + (i - j) + "/" + i + " rows correctly imported!");
-                        }
-                        if (j > 0)
-                        {
-                            MessageHandler.HandleMsg(divMessage, "message-error", errors);
-                        }
-                    }
-                    else if(inputFile.FileName.ToUpper().EndsWith(".XLSX"))
-                    {
-                        if (inputFile.HasFile)
-                        {
-                            string errorMsg = string.Empty;
-
-                            bool hasColumnNames = true; 
-
-                            var excelData = _dataExcelReader.GetExcelFile(filePath);
-
-                            if (excelData != null)
+                            //Process content
+                            errorMessages = _dataExcelReader.ProcessExcelFile(excelData, hasColumnNames);
+                            if (errorMessages.Count > 0)
                             {
-                                //validate column names
-                                List<ExcelMessages> errorMessages = _transactionProcess.ValidateExcelFirstRow(excelData);
-
-                                if (errorMessages.Any(m => m.IsErrored))
-                                {
-                                    foreach (var message in errorMessages)
-                                    {
-                                        errorMsg += message.Message + "! <br/>";
-
-                                    }
-                                    MessageHandler.HandleMsg(divMessage, "message-error", errorMsg);
-
-                                    if (errorMessages.Count == 4)
-                                            hasColumnNames = false;
-                                }
-
-                                //Validate content
-                                errorMessages = _dataExcelReader.ProcessExcelFile(excelData, hasColumnNames);
-                                if (errorMessages.Count > 0)
-                                {
                                     
-                                    foreach (var message in errorMessages)
-                                    {
-                                        if (message.IsErrored)
-                                                errorMsg += message.Message + "! <br/>";
-
-                                    }
-                                   
-                                    MessageHandler.HandleMsg(divMessage, "message-error", errorMsg);
-
-                                    var totalUploadedRecords = errorMessages.Count(m => m.IsErrored == false);
-                                    MessageHandler.HandleMsg(divSuccess, "message-success", "You successfully uploaded " + totalUploadedRecords + " Transactions into the Database.");
+                                foreach (var message in errorMessages)
+                                {
+                                    if (message.IsErrored)
+                                            errorMsg += message.Message + "! <br/>";
 
                                 }
+                                   
+                                MessageHandler.HandleMsg(divMessage, "message-error", errorMsg);
+
+                                var totalUploadedRecords = errorMessages.Count(m => m.IsErrored == false);
+                                MessageHandler.HandleMsg(divSuccess, "message-success", "You successfully uploaded " + totalUploadedRecords + " Transactions into the Database.");
 
                             }
-                            
 
-                        }
-
-                          
+                        }  
                     }
                     else
                     {
@@ -163,8 +96,7 @@ namespace TransactionData
             }
             catch (Exception ex)
             {
-               
-
+                MessageHandler.HandleMsg(divMessage, "error", "Eerror!!: " + ex.Message);
             }
         }
     }
