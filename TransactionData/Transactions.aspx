@@ -3,9 +3,9 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
     <h2>Transactions</h2>
-    
-        <asp:GridView ID="datagrid" runat="server" CssClass="mydatagrid" PagerStyle-CssClass="pager"
- HeaderStyle-CssClass="header" RowStyle-CssClass="rows" AllowPaging="True"  AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource">
+    <br />
+        <asp:GridView ID="gvTransactions" runat="server" CssClass="mydatagrid" PagerStyle-CssClass="pager"
+ HeaderStyle-CssClass="header" RowStyle-CssClass="rows" AllowPaging="True"  AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" OnRowCancelingEdit="gvTransactions_RowCancelingEdit" OnRowDeleting="gvTransactions_RowDeleting" OnRowEditing="gvTransactions_RowEditing" OnRowUpdating="gvTransactions_RowUpdating" OnPageIndexChanging="gvTransactions_PageIndexChanging">
             <Columns>
                 <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
                 <asp:BoundField DataField="Account" HeaderText="Account" SortExpression="Account" />
@@ -25,8 +25,11 @@
 
 <RowStyle CssClass="rows"></RowStyle>
  </asp:GridView>
+        <br />
+            <asp:Label ID="lblSuccessMessage" Text="" runat="server" CssClass="message-success"  />
+            <br />
+            <asp:Label ID="lblErrorMessage" Text="" runat="server" CssClass="message-error" />
 
-    <asp:SqlDataSource ID="SqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Transactions] ORDER BY [Id]"></asp:SqlDataSource>
-</form>
+  </form>
 
 </asp:Content>

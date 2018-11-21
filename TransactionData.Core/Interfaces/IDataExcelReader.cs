@@ -8,5 +8,6 @@ namespace TransactionData.Core.Interfaces
     {
         IExcelDataReader GetExcelFile(string file);
         List<ExcelMessages> ProcessExcelFile(IExcelDataReader excelData, bool hasColumnNames);
+        List<ExcelMessages> ValidateUpdatedData(List<string> transactionDataList);
     }
 }

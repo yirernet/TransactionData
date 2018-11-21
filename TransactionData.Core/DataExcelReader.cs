@@ -70,6 +70,28 @@ namespace TransactionData.Core
             return errorMessages;
         }
 
+        public List<ExcelMessages> ValidateUpdatedData(List<string> transactionDataList)
+        {
+            var errorMessages = new List<ExcelMessages>();
+
+            var transactions = new List<TransactionModel>();
+
+            for (int i = 0; i < transactionDataList.Count; i++)
+            {
+                transactions.Add(new TransactionModel
+                {
+                    Account = transactionDataList[0].ToString(),
+                    Description = transactionDataList[1].ToString(),
+                    CurrencyCode = transactionDataList[2].ToString(),
+                    Amount = transactionDataList[3].ToString()
+                });
+            }
+
+            errorMessages = _transactionProcess.Process(transactions);
+
+            return errorMessages;
+        }
+
     }
 
 

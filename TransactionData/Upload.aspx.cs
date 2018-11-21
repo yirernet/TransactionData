@@ -96,7 +96,7 @@ namespace TransactionData
                     }
                     else
                     {
-                        MessageHandler.HandleMsg(divMessage, "error", "Excel file invalid format. Please select a valid Excel file!!");
+                        MessageHandler.HandleMsg(divMessage, "error", "Invalid Excel file format. Please select a valid Excel file!!");
                     }
                 }
             }

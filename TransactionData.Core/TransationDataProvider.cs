@@ -48,5 +48,20 @@ namespace TransactionData.Core
                 throw;
             }    
         }
+
+        public DataTable Get()
+        {
+            return _dataAccess.GetListTransactionData();
+        }
+
+        public bool Update(string transactionId, List<string> transaction)
+        {
+            return _dataAccess.UpdateTransaction(transactionId, transaction);
+        }
+
+        public bool Delete(string transactionId)
+        {
+            return _dataAccess.DeleteTransaction(transactionId);
+        }
     }
 }
