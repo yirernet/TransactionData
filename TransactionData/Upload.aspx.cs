@@ -31,7 +31,8 @@ namespace TransactionData
             try
             {
                 FileUpload inputFile = fluExcel;
-
+                bool.TryParse(ConfigurationManager.AppSettings["NeedValidExcelColumnNames"].ToString(), out bool needValidColumnNames);
+                
                 // This only works with Internet Explorer
                 //string filePath = inputFile.PostedFiles[0].FileName;
                 //////////////////////////////////////////////////////
@@ -67,6 +68,11 @@ namespace TransactionData
                                         hasColumnNames = false;
                             }
 
+                            if (needValidColumnNames && errorMessages.Any(m => m.IsErrored))
+                            {
+                                throw new ArgumentException("Invalid column header in Excel file!", inputFile.FileName);
+                            }
+
                             //Process content
                             errorMessages = _dataExcelReader.ProcessExcelFile(excelData, hasColumnNames);
                             if (errorMessages.Count > 0)
@@ -90,13 +96,13 @@ namespace TransactionData
                     }
                     else
                     {
-                        MessageHandler.HandleMsg(divMessage, "error", "Please select a valid Excel file!!");
+                        MessageHandler.HandleMsg(divMessage, "error", "Excel file invalid format. Please select a valid Excel file!!");
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageHandler.HandleMsg(divMessage, "error", "Eerror!!: " + ex.Message);
+                MessageHandler.HandleMsg(divMessage, "error", "Error!!: " + ex.Message);
             }
         }
     }
