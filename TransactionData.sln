@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionData.DAL", "Tran
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionData.Core", "TransactionData.Core\TransactionData.Core.csproj", "{B1B1F214-BF69-4AF2-8E76-1E8E3D84100F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{2E260C45-6FBE-4C5F-B6E2-80CEC1D1BC7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionData.Core.Test", "TransactionData.Core.Test\TransactionData.Core.Test.csproj", "{EB2546E1-BB1A-4090-B7B5-19AEC965310F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +39,10 @@ Global
 		{B1B1F214-BF69-4AF2-8E76-1E8E3D84100F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1B1F214-BF69-4AF2-8E76-1E8E3D84100F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1B1F214-BF69-4AF2-8E76-1E8E3D84100F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB2546E1-BB1A-4090-B7B5-19AEC965310F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB2546E1-BB1A-4090-B7B5-19AEC965310F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB2546E1-BB1A-4090-B7B5-19AEC965310F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB2546E1-BB1A-4090-B7B5-19AEC965310F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +52,7 @@ Global
 		{5E5AB2A6-230C-44E0-835D-FB2E140DE853} = {79B003E7-12E7-4D7D-83A7-AECF3A07BE20}
 		{37117334-D2A4-47EE-AF39-FD44E95B69F2} = {C5291D82-51A4-4DDA-B0AE-1D7032BE8BB5}
 		{B1B1F214-BF69-4AF2-8E76-1E8E3D84100F} = {E1982527-C0B5-48A6-A86C-AD373A0A62D1}
+		{EB2546E1-BB1A-4090-B7B5-19AEC965310F} = {2E260C45-6FBE-4C5F-B6E2-80CEC1D1BC7B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5B1CBF55-FF73-4C0A-912E-94835FA242D9}
