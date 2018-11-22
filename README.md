@@ -37,7 +37,7 @@ The solution has 3 projects;
 
 1. Web Project - Web Forms application with three pages.
    - Home welcome page.
-   - Transactions page, this page allows the user to see all the transaction data in the system. Also the user can remove and edit this transaction data.
+   - Transactions page, this page allows the user to see all the transaction data in the system. Also, the user can remove and edit the transaction data.
    - Upload page, this page allows the user to upload the content of an excel (xlsx) file to a database.
 2. Core project - Here we have core business logic.
 3. Data Access project - This is the data access logic.
