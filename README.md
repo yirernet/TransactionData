@@ -25,12 +25,13 @@ ___
    - [Script to create Database in SQLServer.](https://github.com/yirernet/TransactionData/blob/master/TransactionData.DAL/SQLScript/CreateDB_Script.sql).
 
 2. Modified the ConnectionString in the web.config file accordingly.
-3. The Excel file must be a xslx file.
+3. The Excel file must be a xslx file. By default they must be placed in 'C:\Temp\'. This can be modified in the web.config.
 4. There are two appsettings in the web.config;
    - 'ExcelFilePath' to provide the path that contains the xslx files to upload.
    - 'NeedValidExcelColumnNames' 
      - If true,  will validate the first row looking for the column names. If not found it will throw and exception a it will not upload the data into the database.
      - if fasle, will also validate the first row looking for the column names. If not found it will display an error message but it will upload the data into the database.
+5. Check for any missing package or reference when you download or clone the repository.
 
 
 The solution has 3 projects;
