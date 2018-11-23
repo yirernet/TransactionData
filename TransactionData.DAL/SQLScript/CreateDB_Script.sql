@@ -1,11 +1,20 @@
 ﻿USE [master]
 GO
+
+CREATE DATABASE [TransactionDB] 
+GO
+
+ALTER DATABASE [TransactionDB] SET COMPATIBILITY_LEVEL = 100
+GO
+
+Use [TransactionDB]
+GO
+
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
-
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Transactions' AND xtype='U')
 
 
